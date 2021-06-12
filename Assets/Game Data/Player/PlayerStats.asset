@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6bcb29eef997143bb3ad1ac0fc19f2, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  baseMaxHull: 150
+  maxHullEquipment: 0
+  maxHullPowerup: 0
+  currentHull: 150
+  currentMaxHull: 150
+  baseMaxArmour: 150
+  maxArmourEquipment: 0
+  maxArmourPowerup: 0
+  currentArmour: 150
+  currentMaxArmour: 150
+  baseMaxShields: 100
+  maxShieldsEquipment: 0
+  maxShieldsPowerup: 0
+  currentShields: 12
+  currentMaxShields: 100
+  baseShieldRegen: 3
+  shieldRegenEquipment: 0
+  shieldRegenPowerup: 0
+  currentShieldRegen: 3
+  baseShieldCooldownTime: 5
+  shieldCooldownTimeEquipment: 0
+  shieldCooldownTimePowerup: 0
+  currentShieldCooldownTime: 5
+  baseForwardThrust: 200000
+  forwardThrustEquipment: 0
+  forwardThrustPowerup: -50
+  currentForwardThrust: 100000
+  hardVelocityCap: 250
+  baseMaximumVelocity: 150
+  maximumVelocityEquipment: 0
+  maximumVelocityPowerup: -30
+  maximumVelocityIncrementor: 2
+  currentMaximumVelocity: 107
+  baseManeuveringSpeed: 1
+  maneuveringSpeedEquipment: 0
+  maneuveringSpeedPowerup: 0
+  currentManeuveringSpeed: 1
+  baseBatteryCapacity: 100
+  batteryCapacityEquipment: 0
+  batteryCapacityPowerup: 0
+  currentBatteryLevel: 100
+  currentBatteryCapacity: 100
+  baseBatteryRecharge: 7
+  batteryRechargeEquipment: 0
+  batteryRechargePowerup: 0
+  currentBatteryRecharge: 7
+  baseBatteryDrain: 7
+  batteryDrainEquipment: 0
+  batteryDrainPowerup: 0
+  currentBatteryDrain: 7
+  baseProjectileSpeed: 350
+  projectileSpeedEquipment: 0
+  projectileSpeedPowerup: 0
+  currentProjectileSpeed: 350
+  baseProjectileDamage: 25
+  projectileDamageEquipment: 0
+  projectileDamagePowerup: 0
+  currentProjectileDamage: 25
+  baseCollectionRange: 50
+  collectionRangeEquipment: 0
+  collectionRangePowerup: 0
+  currentCollectionRange: 50
+  baseLuck: 1
+  luckEquipment: 0
+  luckPowerup: 0
+  currentLuck: 1
+  baseProfitBoost: 1
+  profitBoostEquipment: 0
+  currentProfitBoost: 1
