@@ -5208,29 +5208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f73fd0d0ef8454e9eb5e05801a7b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scores: {fileID: 1606224321}
-  recordPrefab: {fileID: 1517513640131659983, guid: 31d416728989f234c9853339405b8d54,
-    type: 3}
-  panel: {fileID: 146177007}
-  closeButton: {fileID: 1465004853}
-  nameField: {fileID: 1312454928}
-  wealthField: {fileID: 1596130387}
-  timeField: {fileID: 208176226}
-  hashInput: {fileID: 1376043309}
-  hashResetButton: {fileID: 799954223}
-  hashHashButton: {fileID: 617981270}
-  dropdown: {fileID: 1337954330}
-  searchInput: {fileID: 1115261798}
-  searchResetButton: {fileID: 190233020}
-  searchButton: {fileID: 670657107}
-  wealthBoard: {fileID: 1887554949}
-  timesBoard: {fileID: 1164377975}
-  resultsBoard: {fileID: 1574454693}
-  switchBoardButton: {fileID: 1457510528}
-  switchBoardButtonText: {fileID: 89532392}
-  wealthContent: {fileID: 1907695078}
-  timesContent: {fileID: 252547022}
-  resultsContent: {fileID: 785054682}
 --- !u!1 &1337119266
 GameObject:
   m_ObjectHideFlags: 0
@@ -6338,18 +6315,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1465004851}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1465004853 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3988030775728652291, guid: ff46d33847729f545956db9dc3362d0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1465004851}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1466182658
 GameObject:
   m_ObjectHideFlags: 0
@@ -6886,21 +6851,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606224320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3408f0bca734ad549bc04415dd665682, type: 3}
+  m_Script: {fileID: 11500000, guid: 8edaeacf96a843845a24add2dc40ee28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    dreamlo:
-      leaderboard:
-        entry: []
-  dataRetrieved: 0
-  scores: 
-  result:
-    name: 
-    score: 0
-    seconds: 0
-    text: 
-    date: 
 --- !u!4 &1606224322
 Transform:
   m_ObjectHideFlags: 0

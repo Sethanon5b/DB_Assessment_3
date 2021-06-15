@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The Binary Tree is used to search for a specific string 
+/// </summary>
 public class BinaryTreeObject : MonoBehaviour
 {
     public BinaryTree bT;
