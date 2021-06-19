@@ -72,6 +72,8 @@
     <Compile Include="Assets\Scripts\Assessment Requirements\HighScore\DisplayHighscores.cs" />
     <Compile Include="Assets\Scripts\Assessment Requirements\HighScore\HighScores.cs" />
     <Compile Include="Assets\Scripts\Environment\GroundSpawner.cs" />
+    <Compile Include="Assets\Scripts\Environment\GroundTile.cs" />
+    <Compile Include="Assets\Scripts\Player\OnCollision.cs" />
     <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
     <Compile Include="Assets\Scripts\SceneManagement\SceneChanger.cs" />
     <Reference Include="UnityEngine">
