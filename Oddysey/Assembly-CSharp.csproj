@@ -68,7 +68,7 @@
     <Compile Include="Assets\Scripts\Assessment Requirements\DragDrop\DragDrop.cs" />
     <Compile Include="Assets\Scripts\Assessment Requirements\DragDrop\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Assessment Requirements\Generated_Gui.cs" />
-    <Compile Include="Assets\Scripts\Assessment Requirements\HashUtility.cs" />
+    <Compile Include="Assets\Scripts\Assessment Requirements\HashingScript.cs" />
     <Compile Include="Assets\Scripts\Assessment Requirements\HighScore\DisplayHighscores.cs" />
     <Compile Include="Assets\Scripts\Assessment Requirements\HighScore\HighScores.cs" />
     <Compile Include="Assets\Scripts\Environment\GroundSpawner.cs" />

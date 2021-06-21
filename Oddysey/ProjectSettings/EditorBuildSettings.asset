@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_Selection.unity
     guid: d14ce769b7777cd418e920f6d0d3bba6
+  - enabled: 1
+    path: Assets/Scenes/Hashing_Scene.unity
+    guid: 7252851df3b01da45b78be9405b88c2b
   m_configObjects: {}

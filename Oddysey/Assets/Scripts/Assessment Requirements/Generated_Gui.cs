@@ -15,10 +15,11 @@ public class Generated_Gui : MonoBehaviour
 
     private void OnGUI()
     {
-        GUIContent c = new GUIContent("play", null, "Test tooltip");
-        GUIContent d = new GUIContent("highscore", null, "Test tooltip");
-        GUIContent e = new GUIContent("quit", null, "Test tooltip");
-        GUIContent f = new GUIContent("oddysey", null, "Test tooltip");
+        GUIContent c = new GUIContent("play", null, "Go to Game scene");
+        GUIContent d = new GUIContent("highscore", null, "Go to Highscore scene");
+        GUIContent e = new GUIContent("quit", null, "Terminate the application");
+        GUIContent f = new GUIContent("oddysey", null, "Title");
+        GUIContent g = new GUIContent("hashing", null, "Go to Hashing scene");
 
         // Generates the title of the game
         GUI.Box(new Rect(100, 150, 200, 75), f, titleStyle);
@@ -28,13 +29,18 @@ public class Generated_Gui : MonoBehaviour
         {
             SceneManager.LoadScene("Level_Selection");
         }
-        // This button will take the player to the highscore screen
+        // This button will take the player to the highscore scene
         if (GUI.Button(new Rect(100, 450, 200, 75), d, style))
         {
             SceneManager.LoadScene("Highscore_Scene");
         }
-        // This button will terminate the game
-        if (GUI.Button(new Rect(100, 600, 200, 75), e, style))
+        // This button will take the player to the hashing scene
+        if (GUI.Button(new Rect(100, 600, 200, 75), g, style))
+        {
+            SceneManager.LoadScene("Hashing_Scene");
+        }
+        // This button will terminate the game 
+        if (GUI.Button(new Rect(100, 750, 200, 75), e, style))
         {
             Application.Quit();
         }
