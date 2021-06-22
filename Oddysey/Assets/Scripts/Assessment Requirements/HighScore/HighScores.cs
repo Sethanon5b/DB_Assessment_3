@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 /// <summary>
 /// Source of this script : https://www.youtube.com/watch?v=KZuqEyxYZCc
 /// Dreamlo website : http://dreamlo.com/lb/E7rCqJXFYUiqskUJNPNQPApN8VQfgahEqFY_mxDbUAFg
-/// This script handles the highscore functionality
+/// This script handles the highscore functionality, including uploading/downloading data from dreamlo
 /// </summary>
 public class HighScores : MonoBehaviour
 {
@@ -79,19 +79,23 @@ public class HighScores : MonoBehaviour
             print(highscoresList[i].username + ": " + highscoresList[i].score);
         }
     }
+
+    //// Create Comparator functionality here
+    //void Comparator(string compareName, int compareScore) 
+    //{
+        
+    //}
+   
 }
 
-public struct Highscore 
+public struct Highscore
 {
     public string username;
     public int score;
 
-    public Highscore(string _username, int _score) 
+    public Highscore(string _username, int _score)
     {
         username = _username;
         score = _score;
     }
 }
-
-// The code below is needed for adding profile functionality :
-// Highscores.AddNewHighscore(username, score);
