@@ -22,6 +22,7 @@ public class BinaryTreeObject : MonoBehaviour
 
 public class BinaryTree 
 {
+    // Nested Class Implementation
     public BinaryTreeNode root;
     public class BinaryTreeNode 
     {

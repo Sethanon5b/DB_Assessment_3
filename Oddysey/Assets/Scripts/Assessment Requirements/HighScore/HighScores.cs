@@ -18,17 +18,23 @@ public class HighScores : MonoBehaviour
     static HighScores instance;
     DisplayHighscores highscoresDisplay;
 
+    public BinaryTree binaryTree = new BinaryTree();
+
+    // Calls the instance of the game object, this script is attached to.
+    // Gets the script component DisplayHighscores
     private void Awake()
     {
         instance = this;
         highscoresDisplay = GetComponent<DisplayHighscores>();
     }
 
+    // Gets called by the player when they die, which then uploads their username / score to the DreamLo website. 
     public static void AddNewHighScore(string username, int score) 
     {
         instance.StartCoroutine(instance.UploadNewHighScore(username, score));
     }
-
+ 
+    // Uploads the username / score values to the DreamLo website
     IEnumerator UploadNewHighScore(string username, int score) 
     {
         WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
@@ -45,11 +51,14 @@ public class HighScores : MonoBehaviour
         }
     }
 
+    // Starts the coroutine for connecting to the DreamLo website, and downloading the data
     public void DownloadHighscores() 
     {
         StartCoroutine("DownloadHighScoresFromDatabase");
+
     }
 
+    // If connection is made 
     IEnumerator DownloadHighScoresFromDatabase()
     {
         WWW www = new WWW(webURL + publicCode + "/pipe/");
@@ -76,16 +85,44 @@ public class HighScores : MonoBehaviour
             string username = entryInfo[0];
             int score = int.Parse(entryInfo[1]);
             highscoresList[i] = new Highscore(username, score);
-            print(highscoresList[i].username + ": " + highscoresList[i].score);
+            //print(highscoresList[i].username + ": " + highscoresList[i].score);
+            
         }
+        DuplicateHighscore(highscoresList);
     }
 
-    //// Create Comparator functionality here
-    //void Comparator(string compareName, int compareScore) 
-    //{
-        
-    //}
-   
+    // This duplicates the current scores on the highscore, into binary tree data nodes.  
+    void DuplicateHighscore(Highscore[] highScores) 
+    {
+        binaryTree = new BinaryTree();
+        for (int i = 0; i < highScores.Length; i ++) 
+        {
+            BinaryTree.BinaryTreeNode node = new BinaryTree.BinaryTreeNode() { index = highScores[i].score };
+            binaryTree.CreateNode(node);
+        }
+        binaryTree.TraversePreOrder(binaryTree.root);
+    }
+
+    void CompareNodeValue(Highscore[] highscores) 
+    {
+        //// Doubly Linked List Implementation
+        LinkedList<int> b1 = new LinkedList<int>();
+        LinkedList<int> b2 = new LinkedList<int>();
+
+
+    }
+
+    // This method will sort the scores from highest to lowest via Bubble Sort
+    void sortAscending() 
+    {
+    
+    }
+
+    // This method will sort the scores from Lowest to Highest via Shell Sort 
+    void sortDescending() 
+    {
+    
+    }
 }
 
 public struct Highscore

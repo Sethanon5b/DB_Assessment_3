@@ -1,6 +1,7 @@
 ﻿using System.Text;
 public static class HashingScript 
 {
+    // This script is the main functionality of the hashing script
     // Source of the code : https://www.youtube.com/watch?v=HoEndcK6Bew
     public static string Encryption(string inputText, int key) 
     {

@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class HashTest : MonoBehaviour
 {
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    Debug.Log(HashingScript.Encryption("Poop", 21));
-    //}
-
+  
     public string input;
     public GameObject inputField;
     public Text hashResult;
-
+    /// <summary>
+    /// Any words that the user puts into the input field, will then be encrypted via the Hashing script. 
+    /// Then, the hashResult Text will gain the value of the encryption - allowing the user to see the results. 
+    /// </summary>
     public void StoreText() 
     {
         input = inputField.GetComponent<Text>().text;

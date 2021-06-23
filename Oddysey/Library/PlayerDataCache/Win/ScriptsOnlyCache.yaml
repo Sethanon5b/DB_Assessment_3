@@ -1,6 +1,8 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BinaryTreeObject
+    - Coin
     - DisplayHighscores
     - DragDrop
     - Generated_Gui
@@ -75,14 +77,20 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12010}
     - Class: 114
-      Script: {instanceID: 12580}
+      Script: {instanceID: 12278}
+    - Class: 114
+      Script: {instanceID: 12578}
     - Class: 114
       Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 13068}
+    - Class: 114
+      Script: {instanceID: 17380}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -126,13 +134,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12230}
     - Class: 114
-      Script: {instanceID: 12422}
+      Script: {instanceID: 12420}
     - Class: 114
       Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 12936}
     - Class: 114
-      Script: {instanceID: 19884}
+      Script: {instanceID: 13068}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -183,13 +191,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12230}
     - Class: 114
-      Script: {instanceID: 12422}
-    - Class: 114
       Script: {instanceID: 12714}
     - Class: 114
       Script: {instanceID: 12726}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 13068}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -238,9 +244,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 13068}
     - Class: 114
-      Script: {instanceID: 13120}
+      Script: {instanceID: 13122}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -287,7 +293,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 13068}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -457,7 +463,7 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 2b3f22031227fe317b1885ab7a3631cd
+      Hash: b73e3badf3851bd58253c7f6c2c04597
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GroundTile
@@ -691,6 +697,12 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
+      Hash: 27ecca94bb37b9aa6acb389406be31b4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HashTest
+  - hash:
+      serializedVersion: 2
       Hash: 8cd1cbba27f3cb1717254f668e9e0d5a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -793,10 +805,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 27ecca94bb37b9aa6acb389406be31b4
+      Hash: d4777fd2ce44d1e2e83e35f2ab3c7e15
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: HashTest
+    className: Coin
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main_Menu.unity
@@ -804,4 +816,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Highscore_Scene.unity
   - Assets/Scenes/Level_Selection.unity
   - Assets/Scenes/Hashing_Scene.unity
-  playerPath: D:/Game Builds/Oddyssey Build 0.3 (Hashing Function Implemented)/Oddysey.exe
+  playerPath: D:/Game Builds/Oddyssey Build 0.4 (Binary Tree Implemented, Minor Fixes
+    to Canvas)/Oddysey.exe

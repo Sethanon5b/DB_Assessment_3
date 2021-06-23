@@ -9,7 +9,8 @@ public class GroundTile : MonoBehaviour
 
     public GameObject obstaclePrefab;
 
-    // Will find the GroundSpawner script initially
+    // Will call the GroundSpawner script on the start of the scene
+    // Calls the SpawnObstacle method on the start of the scene
     private void Start()
     {
         groundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
@@ -29,7 +30,7 @@ public class GroundTile : MonoBehaviour
         
     }
     /// <summary>
-    /// This will find a random point, and place an obstacle on it.
+    /// This will find a predetermine point - chosen at random, and then place an obstacle on it.
     /// </summary>
     void SpawnObstacle() 
     {
@@ -38,4 +39,5 @@ public class GroundTile : MonoBehaviour
         // Spawn the object
         Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
     }
+
 }

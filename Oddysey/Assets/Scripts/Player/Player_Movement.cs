@@ -32,7 +32,7 @@ public class Player_Movement : MonoBehaviour
             username += alphabet[Random.Range(0, alphabet.Length)];
         }
         usernameText.text = username;
-        scoreText.text = score.ToString();
+        scoreText.text = score.ToString();       
     }
     /// <summary>
     /// Handles horizontal movement, as well as the increasing the speed of the player overtime. 
@@ -40,7 +40,10 @@ public class Player_Movement : MonoBehaviour
     private void Update()
     {       
         playerPos = transform.position;
+
         float horizontalInput = Input.GetAxis("Horizontal");
+
+        
         transform.position = transform.position + new Vector3(horizontalInput * turnSpeed * Time.deltaTime, 0);
         var pos = transform.position;
         pos.x = Mathf.Clamp(transform.position.x, -4.5f, 4.5f);
@@ -61,21 +64,17 @@ public class Player_Movement : MonoBehaviour
 
         if (timer > 5f)
         {
-
             score += 5;
-
-            //We only need to update the text if the score changed.
+          
             scoreText.text = score.ToString();
 
-            //Reset the timer to 0.
             timer = 0;
         }
     }
     // Send username / score to highscores
     public void Die() 
-    {       
+    {         
         HighScores.AddNewHighScore(username, score);
-        Debug.Log("You have died");
-        SceneManager.LoadScene("Main_Menu");
+        SceneManager.LoadScene("Highscore_Scene");
     }
 }
