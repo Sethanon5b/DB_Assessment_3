@@ -19,7 +19,7 @@ public class BinaryTreeObject : MonoBehaviour
         bT.TraversePreOrder(bT.root);
     }
 }
-
+[System.Serializable]
 public class BinaryTree 
 {
     // Nested Class Implementation
@@ -27,6 +27,8 @@ public class BinaryTree
     public class BinaryTreeNode 
     {
         public int index;
+        public string username;
+        public int score;
         public BinaryTreeNode left;
         public BinaryTreeNode right;
     }
@@ -129,11 +131,13 @@ public class BinaryTree
         return false;
     }
 
+    #region Comparator Implementation // Using this to find Records on the highscore scene
+    
     public BinaryTreeNode Find(int index)
     {
         return Find(index, root);
     }
-
+    
     private BinaryTreeNode Find(int index, BinaryTreeNode parent) 
     {
         if(parent != null) 
@@ -153,12 +157,12 @@ public class BinaryTree
         }
         return null;
     }
-
+    #endregion 
     public void TraversePreOrder(BinaryTreeNode parent) 
     {
         if(parent != null) 
         {
-            Debug.Log(parent.index);
+            //Debug.Log(parent.index);
             TraversePreOrder(parent.left);
             TraversePreOrder(parent.right);
         }

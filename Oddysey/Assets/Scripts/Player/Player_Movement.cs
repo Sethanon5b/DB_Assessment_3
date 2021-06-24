@@ -9,7 +9,7 @@ public class Player_Movement : MonoBehaviour
     private float turnSpeed = 10f;
     private float currentSpeed = 3;
     private float acceleration = .2f;
-    private float maxSpeed = 26;
+    private float maxSpeed = 25;
     private int score = 0;
     private float timer;
 

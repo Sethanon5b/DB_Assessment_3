@@ -9,6 +9,12 @@ using UnityEngine.UI;
 /// </summary>
 public class DisplayHighscores : MonoBehaviour
 {
+    public string input;
+    public GameObject inputField;
+    public Toggle toggle;
+    public Button button;
+    public Text indexResult;
+
     public Text[] highscoreText;
     HighScores highscoreManager;
     /// <summary>
@@ -25,6 +31,9 @@ public class DisplayHighscores : MonoBehaviour
         highscoreManager = GetComponent<HighScores> ();
 
         StartCoroutine("RefreshHighscores");
+
+        button.onClick.AddListener(PerformSearch);
+
     }
     /// <summary>
     /// When the information from Dreamlo is downloaded, it will display the two string values "username" and "score". 
@@ -50,4 +59,76 @@ public class DisplayHighscores : MonoBehaviour
             yield return new WaitForSeconds(30);
         }
     }
+
+    #region Comparator Functionality
+    /// <summary>
+    /// This function will allow the user to search through the binary tree nodes, to find highscore records which are not listed on the scene.
+    /// By typing in the rank number, players will be able to find the username and score of whoever has that position. 
+    /// </summary>
+    public BinaryTree.BinaryTreeNode FindIndex(int index)
+    {
+        BinaryTree.BinaryTreeNode node = highscoreManager.binaryTree.Find(index - 1);
+
+        return node;
+    }
+
+    public Highscore FindUsername(string username)
+    {
+        Highscore highScore = new Highscore(null, 0);
+        input = inputField.GetComponent<InputField>().text;
+
+        foreach (Highscore hs in highscoreManager.linkedList)
+        {
+            if (hs.username == username)
+            {
+                highScore = hs;
+            }
+        }
+
+       return highScore;
+    }
+
+    private void PerformSearch()
+    {
+        input = inputField.GetComponent<InputField>().text;
+        
+        if (!toggle.isOn)
+        {
+            int indexToFind;
+            int.TryParse(input, out indexToFind);
+
+            if(indexToFind != -1)
+            {
+                BinaryTree.BinaryTreeNode node = FindIndex(indexToFind);
+
+                if(node.username != string.Empty)
+                {
+                    indexResult.text = $"Found record in binary tree - name: {node.username}, score: {node.score}";
+                }
+                else
+                {
+                    Debug.Log("Search query returned no results.");
+                }
+            }
+            else
+            {
+                Debug.Log("User tried to parse a non-int value");
+            }
+        }
+        else
+        {
+            Highscore result = FindUsername(input);
+            
+            if(result.username != string.Empty)
+            {
+                Debug.Log("Result: " + result.username);
+                indexResult.text = $"Found record in linked list - name: {result.username}, score: {result.score}";
+            }
+            else
+            {
+                Debug.Log("Search query returned no results.");
+            }
+        }
+    }
+    #endregion
 }

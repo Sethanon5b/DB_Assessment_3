@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// Source of this script : https://www.youtube.com/watch?v=KZuqEyxYZCc
@@ -18,7 +19,16 @@ public class HighScores : MonoBehaviour
     static HighScores instance;
     DisplayHighscores highscoresDisplay;
 
+    [DllImport("SortingComparison")]
+    private static extern void BubbleSort(int[] arr, int n);
+    [DllImport("SortingComparison")]
+    private static extern void ShellSort(int[] arr, int n);
+    [DllImport("SortingComparison")]
+    public static extern int LinearSearch(int[] arr, int maxIndex, int query);
+
     public BinaryTree binaryTree = new BinaryTree();
+    public LinkedList<Highscore> linkedList = new LinkedList<Highscore>();
+
 
     // Calls the instance of the game object, this script is attached to.
     // Gets the script component DisplayHighscores
@@ -55,10 +65,11 @@ public class HighScores : MonoBehaviour
     public void DownloadHighscores() 
     {
         StartCoroutine("DownloadHighScoresFromDatabase");
-
     }
 
-    // If connection is made 
+    /// If connection is made, the scores are downloaded from DreamLo. 
+    /// If a connection isn't made, it will print out an error. 
+    
     IEnumerator DownloadHighScoresFromDatabase()
     {
         WWW www = new WWW(webURL + publicCode + "/pipe/");
@@ -97,35 +108,44 @@ public class HighScores : MonoBehaviour
         binaryTree = new BinaryTree();
         for (int i = 0; i < highScores.Length; i ++) 
         {
-            BinaryTree.BinaryTreeNode node = new BinaryTree.BinaryTreeNode() { index = highScores[i].score };
+            // Binary tree
+            BinaryTree.BinaryTreeNode node = new BinaryTree.BinaryTreeNode();
+            node.index = i;
+            node.username = highScores[i].username;
+            node.score = highScores[i].score;
             binaryTree.CreateNode(node);
+            //Debug.Log(node.username);
+
+            // Linked list
+            linkedList.AddLast(highScores[i]);
+            Debug.Log($"LinkedList: {highScores[i].username}");
         }
         binaryTree.TraversePreOrder(binaryTree.root);
     }
 
-    void CompareNodeValue(Highscore[] highscores) 
-    {
-        //// Doubly Linked List Implementation
-        LinkedList<int> b1 = new LinkedList<int>();
-        LinkedList<int> b2 = new LinkedList<int>();
 
-
-    }
 
     // This method will sort the scores from highest to lowest via Bubble Sort
-    void sortAscending() 
+    void sortRandomly() 
     {
-    
+        
     }
 
     // This method will sort the scores from Lowest to Highest via Shell Sort 
     void sortDescending() 
     {
-    
+        
+    }
+
+    // This method will search for a score by typing in a username
+    void searchScores() 
+    {
+        //string input = searchInput.Text;
+
     }
 }
 
-public struct Highscore
+public class Highscore
 {
     public string username;
     public int score;
