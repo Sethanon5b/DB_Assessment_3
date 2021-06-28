@@ -9,7 +9,7 @@ public class Player_Movement : MonoBehaviour
     private float turnSpeed = 10f;
     private float currentSpeed = 3;
     private float acceleration = .2f;
-    private float maxSpeed = 25;
+    private float maxSpeed = 24;
     private int score = 0;
     private float timer;
 
@@ -43,12 +43,13 @@ public class Player_Movement : MonoBehaviour
 
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        
+        // Horizontal Movement
         transform.position = transform.position + new Vector3(horizontalInput * turnSpeed * Time.deltaTime, 0);
         var pos = transform.position;
         pos.x = Mathf.Clamp(transform.position.x, -4.5f, 4.5f);
         transform.position = pos;
 
+        // Forward Speed
         if (currentSpeed < maxSpeed)
         {
             currentSpeed += Time.deltaTime * acceleration;
@@ -62,6 +63,7 @@ public class Player_Movement : MonoBehaviour
 
         timer += Time.deltaTime;
 
+        // Score Timer
         if (timer > 5f)
         {
             score += 5;
@@ -71,7 +73,7 @@ public class Player_Movement : MonoBehaviour
             timer = 0;
         }
     }
-    // Send username / score to highscores
+    // Send username / score to highscores when this is called 
     public void Die() 
     {         
         HighScores.AddNewHighScore(username, score);

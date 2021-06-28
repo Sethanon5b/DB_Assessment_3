@@ -15,11 +15,11 @@ public class Generated_Gui : MonoBehaviour
 
     private void OnGUI()
     {
-        GUIContent c = new GUIContent("play", null, "Go to Game scene");
-        GUIContent d = new GUIContent("highscore", null, "Go to Highscore scene");
-        GUIContent e = new GUIContent("quit", null, "Terminate the application");
-        GUIContent f = new GUIContent("oddysey", null, "Title");
-        GUIContent g = new GUIContent("hashing", null, "Go to Hashing scene");
+        GUIContent c = new GUIContent("Play", null, "Go to Game scene");
+        GUIContent d = new GUIContent("Highscore", null, "Go to Highscore scene");
+        GUIContent e = new GUIContent("Quit", null, "Terminate the application");
+        GUIContent f = new GUIContent("Oddysey", null, "Title");
+        GUIContent g = new GUIContent("Hashing", null, "Go to Hashing scene");
 
         // Generates the title of the game
         GUI.Box(new Rect(100, 150, 200, 75), f, titleStyle);
