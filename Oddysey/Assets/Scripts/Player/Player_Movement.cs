@@ -8,7 +8,7 @@ public class Player_Movement : MonoBehaviour
 {
     private float turnSpeed = 12f;
     private float currentSpeed = 3;
-    private float acceleration = .15f;
+    private float acceleration = .2f;
     private float maxSpeed = 28;
     private int score = 0;
     private float timer;
@@ -76,6 +76,6 @@ public class Player_Movement : MonoBehaviour
     public void Die() 
     {         
         HighScores.AddNewHighScore(username, score);
-        SceneManager.LoadScene("Highscore_Scene");
+        SceneManager.LoadScene("Death_Scene");
     }
 }

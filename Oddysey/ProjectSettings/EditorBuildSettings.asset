@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hashing_Scene.unity
     guid: 7252851df3b01da45b78be9405b88c2b
+  - enabled: 1
+    path: Assets/Scenes/Death_Scene.unity
+    guid: 885b294d9ec9a864ebb0837daca22495
   m_configObjects: {}
