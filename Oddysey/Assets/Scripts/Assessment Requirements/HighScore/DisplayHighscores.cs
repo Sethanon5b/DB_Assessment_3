@@ -10,13 +10,18 @@ using UnityEngine.UI;
 public class DisplayHighscores : MonoBehaviour
 {
     public string input;
-    public GameObject inputField;
-    public Toggle toggle;
-    public Button button;
+    public Text title;
+    public InputField inputField;
+    public Dropdown searchMethod;
+    public Button searchButton;
+    public Button bubbleSortButton;
+    public Button shellSortButton;
+    public Button resetDataButton;
     public Text indexResult;
 
     public Text[] highscoreText;
     HighScores highscoreManager;
+
     /// <summary>
     /// Initially, the list of scores will all display the message "fetching...", until it downloads the information from Dreamlo. 
     /// If it cannot get this information, it will repeat displaying the initial message.
@@ -32,9 +37,13 @@ public class DisplayHighscores : MonoBehaviour
 
         StartCoroutine("RefreshHighscores");
 
-        button.onClick.AddListener(PerformSearch);
+        searchButton.onClick.AddListener(PerformSearch);
+        bubbleSortButton.onClick.AddListener(BubbleSortPressed);
+        shellSortButton.onClick.AddListener(ShellSortPressed);
+        resetDataButton.onClick.AddListener(ResetDataPressed);
 
     }
+
     /// <summary>
     /// When the information from Dreamlo is downloaded, it will display the two string values "username" and "score". 
     /// </summary>
@@ -43,14 +52,62 @@ public class DisplayHighscores : MonoBehaviour
     {
         for (int i = 0; i < highscoreText.Length; i++)
         {
-            highscoreText[i].text = i + 1 + ". ";
-            if(highscoreList.Length > i) 
+            highscoreText[i].text = i + 1 + " - " + highscoreManager.highscoresList[i].username + " - " + highscoreManager.highscoresList[i].score;
+        }
+    }
+
+    /// <summary>
+    /// This is tied to the Onclick event for the relevant UI button. When this is clicked, 
+    /// it uses the binary tree (which has been sorted according to the bubble sort function) to display the top ten scores.  
+    /// </summary>
+    private void BubbleSortPressed()
+    {
+        Debug.Log("Bubble sort pressed!");
+        for (int i = 0; i < highscoreText.Length; i++)
+        {
+            Debug.Log("Current index: " + i);
+            BinaryTree.BinaryTreeNode node = highscoreManager.binaryTree.Find(i + 1);
+            if(node != null)
             {
-                highscoreText[i].text += highscoreList[i].username + " - " + highscoreList[i].score;
+                highscoreText[i].text = i + 1 + " - " + node.username + " - " + node.score;
+            }
+            else
+            {
+                Debug.Log("Node is null");
             }
         }
     }
 
+    /// <summary>
+    /// This is tied to the Onclick event for the relevant UI button. When this is clicked, 
+    /// it uses Linked List (which has been sorted according to the shell sort function) to display the top ten scores.  
+    /// </summary>
+    private void ShellSortPressed()
+    {
+        LinkedListNode<Highscore> node = highscoreManager.linkedList.First;
+
+        for (int i = 0; i < highscoreText.Length; i++)
+        {
+            highscoreText[i].text = i + 1 + " - " + node.Value.username + " - " + node.Value.score;
+            node = node.Next;
+        }
+    }
+
+    /// <summary>
+    /// This clears the highscores present in the highscore scene. 
+    /// </summary>
+    private void ResetDataPressed()
+    {
+        for (int i = 0; i < highscoreText.Length; i++)
+        {
+            highscoreText[i].text = "Data Cleared";
+        }
+    }
+
+    /// <summary>
+    /// Every 30 seconds, it will refresh the highscores list. 
+    /// </summary>
+    /// <returns></returns>
     IEnumerator RefreshHighscores() 
     {
         while (true) 
@@ -72,41 +129,70 @@ public class DisplayHighscores : MonoBehaviour
         return node;
     }
 
+    /// <summary>
+    /// When the user types in the correct username, this method will return the data associated with that username (i.e score)
+    /// If what the user types doesn't correspond with anything in the list, it returns null.
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
     public Highscore FindUsername(string username)
     {
-        Highscore highScore = new Highscore(null, 0);
-        input = inputField.GetComponent<InputField>().text;
+        input = inputField.text;
 
         foreach (Highscore hs in highscoreManager.linkedList)
         {
             if (hs.username == username)
             {
-                highScore = hs;
+                return hs;
             }
         }
 
-       return highScore;
+       return null;
     }
 
+    /// <summary>
+    /// When the user types in the correct score, this method will return the data associated with that score (i.e username)
+    /// If what the user types doesn't correspond with anything in the list, it returns null.
+    /// </summary>
+    /// <param name="score"></param>
+    /// <returns></returns>
+    public BinaryTree.BinaryTreeNode FindScore(int score)
+    {
+        BinaryTree.BinaryTreeNode node = highscoreManager.PerformLinearSearch(score);
+        
+        if (node != null)
+        {
+            return node;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// This creates the value of the drop-down menu in the highscore scene, which allows the user to specify what type of search to perform. I.E Username, Score or Rank. 
+    /// </summary>
     private void PerformSearch()
     {
-        input = inputField.GetComponent<InputField>().text;
+        input = inputField.text;
         
-        if (!toggle.isOn)
+        if (searchMethod.value == 0) // Search by rank
         {
             int indexToFind;
             int.TryParse(input, out indexToFind);
 
             if(indexToFind != -1)
             {
-                BinaryTree.BinaryTreeNode node = FindIndex(indexToFind);
+                BinaryTree.BinaryTreeNode node = FindIndex(indexToFind + 1);
 
-                if(node.username != null /*string.Empty*/)
+                if(node != null)
                 {
                     indexResult.text = $"Found record in binary tree - name: {node.username}, score: {node.score}";
                 }
                 else
                 {
+                    indexResult.text = "Could not find a result";
                     Debug.Log("Search query returned no results.");
                 }
             }
@@ -115,17 +201,43 @@ public class DisplayHighscores : MonoBehaviour
                 Debug.Log("User tried to parse a non-int value");
             }
         }
-        else
+        else if (searchMethod.value == 1) // Search by username
         {
             Highscore result = FindUsername(input);
             
-            if(result.username != string.Empty)
+            if(result != null)
             {
-                Debug.Log("Result: " + result.username);
+                //Debug.Log("Result: " + result.username);
                 indexResult.text = $"Found record in linked list - name: {result.username}, score: {result.score}";
             }
             else
             {
+                indexResult.text = "Could not find a result";
+                Debug.Log("Search query returned no results.");
+            }
+        }
+        else if (searchMethod.value == 2) // Search by score
+        {
+            int scoreToFind;
+            int.TryParse(inputField.text, out scoreToFind);
+
+            if(scoreToFind != -1)
+            {
+                BinaryTree.BinaryTreeNode result = FindScore(int.Parse(inputField.text));
+
+                if(result != null)
+                {
+                    indexResult.text = $"Found record in linked list - name: {result.username}, score: {result.score}";
+                }
+                else
+                {
+                    indexResult.text = "Could not find a result";
+                    Debug.Log("Search query returned no results.");
+                }
+            }
+            else
+            {
+                indexResult.text = "Could not find a result";
                 Debug.Log("Search query returned no results.");
             }
         }

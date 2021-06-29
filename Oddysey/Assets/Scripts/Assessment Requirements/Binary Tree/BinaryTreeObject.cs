@@ -2,23 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BinaryTreeObject : MonoBehaviour
-{
-    public BinaryTree bT;
-
-    private void Start()
-    {
-        bT = new BinaryTree();
-        for(int i = 0; i < 20; i++) 
-        {
-            BinaryTree.BinaryTreeNode n = new BinaryTree.BinaryTreeNode();
-            n.index = Random.Range(-20, 21);
-            bT.CreateNode(n);
-            Debug.Log(n.index);
-        }
-        bT.TraversePreOrder(bT.root);
-    }
-}
 [System.Serializable]
 public class BinaryTree 
 {
@@ -41,6 +24,11 @@ public class BinaryTree
         root = _root;
     }
 
+    /// <summary>
+    /// This creates the node at the index specified and specifies it's neighbour nodes
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     public bool CreateNodeAtIndex(int index) 
     {
         BinaryTreeNode before = null;
@@ -84,6 +72,11 @@ public class BinaryTree
         return true;
     }
 
+    /// <summary>
+    /// Creates a new node within the binary tree at the next logical index
+    /// </summary>
+    /// <param name="node"></param>
+    /// <returns></returns>
     public bool CreateNode(BinaryTreeNode node) 
     {
         if(node != null) 
@@ -132,12 +125,22 @@ public class BinaryTree
     }
 
     #region Comparator Implementation // Using this to find Records on the highscore scene
-    
+    /// <summary>
+    /// This is an override for the Find function which assumes the root is the default search start position
+    /// </summary>
+    /// <param name="index">The index to look for within the binary tree</param>
+    /// <returns>The binary tree node at the relevant index</returns>
     public BinaryTreeNode Find(int index)
     {
         return Find(index, root);
     }
-    
+
+    /// <summary>
+    /// Takes the index and input parent node (the place to start looking from) and recursively searches through the binary tree and looks for the input index.
+    /// </summary>
+    /// <param name="index">The index to look for within the binary tree.</param>
+    /// <param name="parent">The node at which to commence searching through the binary tree.</param>
+    /// <returns></returns>
     private BinaryTreeNode Find(int index, BinaryTreeNode parent) 
     {
         if(parent != null) 
@@ -158,33 +161,5 @@ public class BinaryTree
         return null;
     }
     #endregion 
-    public void TraversePreOrder(BinaryTreeNode parent) 
-    {
-        if(parent != null) 
-        {
-            //Debug.Log(parent.index);
-            TraversePreOrder(parent.left);
-            TraversePreOrder(parent.right);
-        }
-    }
 
-    public void TraversePostOrder(BinaryTreeNode parent) 
-    {
-        if(parent != null) 
-        {
-            TraversePostOrder(parent.left);
-            TraversePostOrder(parent.right);
-            Debug.Log(parent.index);
-        }
-    }
-
-    public void TraverseInOrder(BinaryTreeNode parent) 
-    {
-        if(parent != null) 
-        {
-            TraverseInOrder(parent.left);
-            Debug.Log(parent.index);
-            TraverseInOrder(parent.right);
-        }
-    }
 }
