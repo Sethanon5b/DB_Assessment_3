@@ -24,13 +24,8 @@ public class GroundTile : MonoBehaviour
         Destroy(gameObject, 2);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     /// <summary>
-    /// This will find a predetermine point - chosen at random, and then place an obstacle on it.
+    /// This will find a predetermine point on the groundtile - chosen at random, and then place an obstacle on it.
     /// </summary>
     void SpawnObstacle() 
     {

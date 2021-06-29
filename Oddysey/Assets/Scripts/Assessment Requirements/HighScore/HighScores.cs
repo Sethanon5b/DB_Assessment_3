@@ -114,34 +114,12 @@ public class HighScores : MonoBehaviour
             node.username = highScores[i].username;
             node.score = highScores[i].score;
             binaryTree.CreateNode(node);
-            //Debug.Log(node.username);
 
             // Linked list
             linkedList.AddLast(highScores[i]);
             Debug.Log($"LinkedList: {highScores[i].username}");
         }
         binaryTree.TraversePreOrder(binaryTree.root);
-    }
-
-
-
-    // This method will sort the scores from highest to lowest via Bubble Sort
-    void sortRandomly() 
-    {
-        
-    }
-
-    // This method will sort the scores from Lowest to Highest via Shell Sort 
-    void sortDescending() 
-    {
-        
-    }
-
-    // This method will search for a score by typing in a username
-    void searchScores() 
-    {
-        //string input = searchInput.Text;
-
     }
 }
 

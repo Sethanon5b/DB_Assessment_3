@@ -74,8 +74,11 @@
     <Compile Include="Assets\Scripts\Assessment Requirements\HighScore\HighScores.cs" />
     <Compile Include="Assets\Scripts\Environment\GroundSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\GroundTile.cs" />
+    <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Player\OnCollision.cs" />
     <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
+    <Compile Include="Assets\Scripts\Player\Player_Rotate.cs" />
+    <Compile Include="Assets\Scripts\SceneManagement\BackgroundMusic.cs" />
     <Compile Include="Assets\Scripts\SceneManagement\SceneChanger.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Unity Projects/2019.4.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

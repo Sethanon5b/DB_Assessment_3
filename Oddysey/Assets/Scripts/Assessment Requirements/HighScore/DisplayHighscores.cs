@@ -101,7 +101,7 @@ public class DisplayHighscores : MonoBehaviour
             {
                 BinaryTree.BinaryTreeNode node = FindIndex(indexToFind);
 
-                if(node.username != string.Empty)
+                if(node.username != null /*string.Empty*/)
                 {
                     indexResult.text = $"Found record in binary tree - name: {node.username}, score: {node.score}";
                 }

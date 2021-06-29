@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class Player_Movement : MonoBehaviour
 {
-    private float turnSpeed = 10f;
+    private float turnSpeed = 12f;
     private float currentSpeed = 3;
-    private float acceleration = .2f;
-    private float maxSpeed = 24;
+    private float acceleration = .15f;
+    private float maxSpeed = 28;
     private int score = 0;
     private float timer;
-
 
     string username = "";
     string alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -31,14 +30,14 @@ public class Player_Movement : MonoBehaviour
         {
             username += alphabet[Random.Range(0, alphabet.Length)];
         }
-        usernameText.text = username;
-        scoreText.text = score.ToString();       
+        usernameText.text = "Username : " + username;
+        scoreText.text = "Score : " + score.ToString();       
     }
     /// <summary>
     /// Handles horizontal movement, as well as the increasing the speed of the player overtime. 
     /// </summary>
     private void Update()
-    {       
+    {
         playerPos = transform.position;
 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -46,7 +45,7 @@ public class Player_Movement : MonoBehaviour
         // Horizontal Movement
         transform.position = transform.position + new Vector3(horizontalInput * turnSpeed * Time.deltaTime, 0);
         var pos = transform.position;
-        pos.x = Mathf.Clamp(transform.position.x, -4.5f, 4.5f);
+        pos.x = Mathf.Clamp(transform.position.x, -4f, 4f);
         transform.position = pos;
 
         // Forward Speed
@@ -66,9 +65,9 @@ public class Player_Movement : MonoBehaviour
         // Score Timer
         if (timer > 5f)
         {
-            score += 5;
+            score +=  5;
           
-            scoreText.text = score.ToString();
+            scoreText.text = "Score : " + score.ToString();
 
             timer = 0;
         }
