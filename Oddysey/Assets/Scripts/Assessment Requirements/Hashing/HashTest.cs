@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HashTest : MonoBehaviour
-{
-  
-    public string input;
+{ 
+    public String input;
     public GameObject inputField;
     public Text hashResult;
     /// <summary>
@@ -16,7 +16,6 @@ public class HashTest : MonoBehaviour
     public void StoreText() 
     {
         input = inputField.GetComponent<Text>().text;
-        hashResult.GetComponent<Text>().text = HashingScript.Encryption(input, 400);
+        hashResult.GetComponent<Text>().text = HashingScript.HashString(input).ToString();
     }
-
 }

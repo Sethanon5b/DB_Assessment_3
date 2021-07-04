@@ -14,8 +14,8 @@ public class DisplayHighscores : MonoBehaviour
     public InputField inputField;
     public Dropdown searchMethod;
     public Button searchButton;
-    public Button bubbleSortButton;
-    public Button shellSortButton;
+    //public Button bubbleSortButton;
+    //public Button shellSortButton;
     public Button resetDataButton;
     public Text indexResult;
 
@@ -25,6 +25,7 @@ public class DisplayHighscores : MonoBehaviour
     /// <summary>
     /// Initially, the list of scores will all display the message "fetching...", until it downloads the information from Dreamlo. 
     /// If it cannot get this information, it will repeat displaying the initial message.
+    /// The functionality of the buttons are also called here. 
     /// </summary>
     void Start()
     {
@@ -38,8 +39,6 @@ public class DisplayHighscores : MonoBehaviour
         StartCoroutine("RefreshHighscores");
 
         searchButton.onClick.AddListener(PerformSearch);
-        bubbleSortButton.onClick.AddListener(BubbleSortPressed);
-        shellSortButton.onClick.AddListener(ShellSortPressed);
         resetDataButton.onClick.AddListener(ResetDataPressed);
 
     }
@@ -60,14 +59,15 @@ public class DisplayHighscores : MonoBehaviour
     /// This is tied to the Onclick event for the relevant UI button. When this is clicked, 
     /// it uses the binary tree (which has been sorted according to the bubble sort function) to display the top ten scores.  
     /// </summary>
-    private void BubbleSortPressed()
+    public void BubbleSortPressed()
     {
+        highscoreManager.CreateSortArrays();
         Debug.Log("Bubble sort pressed!");
         for (int i = 0; i < highscoreText.Length; i++)
         {
             Debug.Log("Current index: " + i);
             BinaryTree.BinaryTreeNode node = highscoreManager.binaryTree.Find(i + 1);
-            if(node != null)
+            if (node != null)
             {
                 highscoreText[i].text = i + 1 + " - " + node.username + " - " + node.score;
             }
@@ -75,21 +75,6 @@ public class DisplayHighscores : MonoBehaviour
             {
                 Debug.Log("Node is null");
             }
-        }
-    }
-
-    /// <summary>
-    /// This is tied to the Onclick event for the relevant UI button. When this is clicked, 
-    /// it uses Linked List (which has been sorted according to the shell sort function) to display the top ten scores.  
-    /// </summary>
-    private void ShellSortPressed()
-    {
-        LinkedListNode<Highscore> node = highscoreManager.linkedList.First;
-
-        for (int i = 0; i < highscoreText.Length; i++)
-        {
-            highscoreText[i].text = i + 1 + " - " + node.Value.username + " - " + node.Value.score;
-            node = node.Next;
         }
     }
 

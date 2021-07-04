@@ -80,8 +80,8 @@ public class HighScores : MonoBehaviour
 
         if (string.IsNullOrEmpty(www.error))
         {
-            FormatHighscores(www.text);
-            highscoresDisplay.OnHighscoresDownloaded(highscoresList);
+            Debug.Log("Data can be downloaded");
+            FormatHighscores(www.text);           
         }
         else
         {
@@ -104,36 +104,36 @@ public class HighScores : MonoBehaviour
             int score = int.Parse(entryInfo[1]);
             highscoresList[i] = new Highscore(username, score);
         }
-
-        // Duplicate and sort the high scores list
-        CreateSortArrays();
-        BubbleSort(bubbleScores, bubbleScores.Length);
-        ShellSort(shellScores, shellScores.Length);
-
-        List<Highscore> pairedBubble = PairData(bubbleScores);
-        List<Highscore> pairedShell = PairData(shellScores);
-
-        PopulateBinaryTree(pairedBubble);
-        PopulateLinkedList(pairedShell);
-
     }
 
     /// <summary>
-    /// This creates two highscores list arrays, one sorted by bubble sort and the other by shell sort.  
+    /// This creates two highscore list arrays when it is called, one sorted by bubble sort and the other by shell sort.  
+    /// The Bubble Sorted list is needed for the Rank/Score search function to work.
+    /// The Shell Sorted list is needed for the username search function to work.
     /// </summary>
-    void CreateSortArrays()
+    public void CreateSortArrays()
     {
+        // This for loop is the main highscore data that is stored into the binary tree. 
         bubbleScores = new int[highscoresList.Length];
         for (int i = 0; i < bubbleScores.Length; i++)
         {
             bubbleScores[i] = highscoresList[i].score;
         }
+        BubbleSort(bubbleScores, bubbleScores.Length);
+        List<Highscore> pairedBubble = PairData(bubbleScores);
+        PopulateBinaryTree(pairedBubble);
 
+        // The below for loop is needed for the Search Username function to work!!
         shellScores = new int[highscoresList.Length];
         for (int i = 0; i < shellScores.Length; i++)
         {
             shellScores[i] = highscoresList[i].score;
         }
+        ShellSort(shellScores, shellScores.Length);
+        List<Highscore> pairedShell = PairData(shellScores);
+        PopulateLinkedList(pairedShell);
+
+        highscoresDisplay.OnHighscoresDownloaded(highscoresList);
     }
 
     /// <summary>
